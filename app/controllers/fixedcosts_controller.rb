@@ -2,7 +2,7 @@ class FixedcostsController < ApplicationController
   before_action :set_fixedcost, only: [:show, :edit, :update, :destroy]
 
   def index
-    @fixedcosts = Fixedcost.order(created_at: :asc)
+    @fixedcosts = Fixedcost.order(:created_at)
   end
 
   def show
@@ -16,7 +16,7 @@ class FixedcostsController < ApplicationController
   end
 
   def create
-    @fixedcost = Fixedcost.new(params[:fixedcost])
+    @fixedcost = Fixedcost.new(fixedcost_params)
     if @fixedcost.save
       redirect_to @fixedcost, notice: "固定費科目を登録しました"
     else
@@ -25,7 +25,7 @@ class FixedcostsController < ApplicationController
   end
 
   def update
-    @fixedcost.assign_attributes(params[:fixedcost])
+    @fixedcost.assign_attributes(fixedcost_params)
     if @fixedcost.save
       redirect_to @fixedcost, notice: "固定費科目を登録しました"
     else
@@ -39,6 +39,10 @@ class FixedcostsController < ApplicationController
   end
 
   private
+  def fixedcost_params
+    params.require(:fixedcost).permit(:name, :description)
+  end
+
   def set_fixedcost
     @fixedcost = Fixedcost.find(params[:id])
   end

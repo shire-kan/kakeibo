@@ -36,5 +36,4 @@ class Form::IncomeForm < Form::Base
 	def target_income_values
 		self.income_values.select { |v| '*' }
 	end
- 
 end

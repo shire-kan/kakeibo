@@ -2,7 +2,7 @@ class IncomesController < ApplicationController
   before_action :set_income, only: [:show, :edit, :update, :destroy]
 
   def index
-    @incomes = Income.order(created_at: :asc)
+    @incomes = Income.order(:created_at)
   end
 
   def show
@@ -25,7 +25,7 @@ class IncomesController < ApplicationController
   end
 
   def update
-    @income.assign_attributes(params[:income])
+    @income.assign_attributes(income_params)
     if @income.save
       redirect_to @income, notice: "収入科目を登録しました"
     else
