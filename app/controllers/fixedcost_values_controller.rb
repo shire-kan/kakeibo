@@ -1,7 +1,7 @@
 class FixedcostValuesController < ApplicationController
   def index
-		@fixedcosts = Fixedcost.order(created_at: :asc)
-		@fixedcost_values = FixedcostValue.order("year_month asc")
+		@fixedcosts = Fixedcost.order(:created_at)
+		@fixedcost_values = FixedcostValue.order(:year_month)
 	end
  
 	def show
@@ -12,7 +12,7 @@ class FixedcostValuesController < ApplicationController
 		year_month_day = params[:year_month] + "-01"
 		@year_month = year_month_day.to_date
  
-		@fixedcosts = Fixedcost.order(created_at: :asc)
+		@fixedcosts = Fixedcost.order(:created_at)
 		@form = Form::FixedcostForm.new
 	end
  
