@@ -3,7 +3,7 @@ class Form::IncomeForm < Form::Base
  
 	def initialize(attributes = {})
     super attributes
-		incomes = Income.order(created_at: :asc)
+		incomes = Income.order(:created_at)
 		self.income_values = incomes.map { |income| IncomeValue.new(income_id: income.id) } unless income_values.present?
   end
  
