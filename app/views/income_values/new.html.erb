@@ -11,29 +11,28 @@
     <th>値</th>
     <th>備考</th>
   </tr>
- 
+
   <% cnt=0 %>
   <%= fb.fields_for :income_values do |f| %>
   <%= f.hidden_field :income_id %>
- 
- <tr>
+
+  <tr>
 		<td>
       <%= f.date_select :year_month,
 						start_year: 2010, end_year: Time.current.year,
 						use_month_numbers: true, discard_day: true, default: @year_month
             %>
     </td>
- 
-   <th>
+
+  <th>
     <%= @incomes.find(@form.income_values[cnt].income_id).name %>
-    </th>
-    <% cnt+=1 %>
-    <td><%= f.text_field :value, size: 8 %></td>
-    <td><%= f.text_field :description, size: 8 %></td>
- 
+  </th>
+  <% cnt+=1 %>
+  <td><%= f.text_field :value, size: 8 %></td>
+  <td><%= f.text_field :description, size: 8 %></td>
  </tr>
 <% end %>
 </table>
  
-<div><%= fb.submit %></div>
+<div><input type="submit", class="btn btn--orange btn--radius"></div>
 <% end %>

@@ -3,7 +3,7 @@
 <p>登録年月を設定してください</p>
 <%= form_tag({controller: :income_values, action: :new}, {method: :post}) do %>
 	<input type="month" name="year_month">
-	<input type="submit">
+	<input type="submit", class="btn btn--orange btn--radius">
 <% end %>
  
 <h2>収入科目 データ一覧 </h2>

@@ -1,28 +1,17 @@
-<h1>Kakeibo</h1>
-<p>Sample</p>
+<div class = "main">
+<h1>家計簿アプリ</h1>
 
-<h2>科目設定</h2>
+<h2>収支項目登録</h2>
 <ul>
-  <li><%= link_to "収入科目設定", :incomes %></li>
-</ul>
-
-<ul>
-  <li><%= link_to "固定費科目設定", :fixedcosts %></li>
-</ul>
-
-<ul>
-  <li><%= link_to "変動費科目設定", :variablecosts %></li>
+  <li><%= link_to "収入（給料・ボーナス等）", :incomes %></li>
+  <li><%= link_to "固定費（家賃・保険料等）", :fixedcosts %></li>
+  <li><%= link_to "変動支出（食費・交友費等）", :variablecosts %></li>
 </ul>
 
 <h2>収支登録</h2>
 <ul>
-	<li><%= link_to "収入金額登録", :income_values %></li>
+	<li><%= link_to "収入入力", :income_values %></li>
+	<li><%= link_to "固定費入力", :fixedcost_values %></li>
+	<li><%= link_to "変動支出入力", :variablecost_values %></li>
 </ul>
-
-<ul>
-	<li><%= link_to "固定費金額登録", :fixedcost_values %></li>
-</ul>
-
-<ul>
-	<li><%= link_to "変動費金額登録", :variablecost_values %></li>
-</ul>
+</div>
