@@ -2,7 +2,7 @@ class VariablecostsController < ApplicationController
   before_action :set_variablecost, only: [:show, :edit, :update, :destroy]
 
   def index
-    @variablecosts = Variablecost.order(created_at: :asc)
+    @variablecosts = Variablecost.order(:created_at)
   end
 
   def show
@@ -16,7 +16,7 @@ class VariablecostsController < ApplicationController
   end
 
   def create
-    @variablecost = Variablecost.new(params[:variablecost])
+    @variablecost = Variablecost.new(variablecost_params)
     if @variablecost.save
       redirect_to @variablecost, notice: "変動費科目を登録しました"
     else
@@ -25,7 +25,7 @@ class VariablecostsController < ApplicationController
   end
 
   def update
-    @variablecost.assign_attributes(params[:variablecost])
+    @variablecost.assign_attributes(variablecost_params)
     if @variablecost.save
       redirect_to @variablecost, notice: "変動費科目を登録しました"
     else
@@ -39,6 +39,10 @@ class VariablecostsController < ApplicationController
   end
 
   private
+  def variablecost_params
+    params.require(:variablecost).permit(:name, :description)
+  end
+
   def set_variablecost
     @variablecost = Variablecost.find(params[:id])
   end
