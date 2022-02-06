@@ -3,7 +3,7 @@ class CreateFixedcostValues < ActiveRecord::Migration[6.0]
     create_table :fixedcost_values do |t|
       t.integer :fixedcost_id, null: false
       t.date :year_month
-      t.integer :value
+      t.integer :value, null: false
       t.string :description
       t.timestamps
     end

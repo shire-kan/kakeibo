@@ -1,11 +1,12 @@
 class FixedcostValuesController < ApplicationController
+	before_action :set_fixedcostvalue, only: [:show, :edit, :update, :destroy]
+
   def index
 		@fixedcosts = Fixedcost.order(:created_at)
 		@fixedcost_values = FixedcostValue.order(:year_month)
 	end
  
 	def show
-		@fixedcost_value = FixedcostValue.find(params[:id])
 	end
  
 	def new
@@ -17,7 +18,6 @@ class FixedcostValuesController < ApplicationController
 	end
  
 	def edit
-		@fixedcost_value = FixedcostValue.find(params[:id])
 		@fixedcost = Fixedcost.find(@fixedcost_value.fixedcost_id)
 	end
  
@@ -37,7 +37,6 @@ class FixedcostValuesController < ApplicationController
 	end
  
 	def update
-		@fixedcost_value = FixedcostValue.find(params[:id])
 		@fixedcost_value.assign_attributes(params[:fixedcost_value])
 		if @fixedcost_value.save
 			redirect_to :fixedcost_values, notice: "情報を更新しました"
@@ -47,8 +46,12 @@ class FixedcostValuesController < ApplicationController
 	end
  
 	def destroy
-		@fixedcost_value = FixedcostValue.find(params[:id])
 		@fixedcost_value.destroy
 		redirect_to :fixedcost_values, notice: "データを削除しました"
+	end
+
+	private
+	def set_fixedcostvalue
+		@fixedcost_value = FixedcostValue.find(params[:id])
 	end
 end
