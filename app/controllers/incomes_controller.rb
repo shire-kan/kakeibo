@@ -16,7 +16,7 @@ class IncomesController < ApplicationController
   end
 
   def create
-    @income = Income.new(params[:income])
+    @income = Income.new(income_params)
     if @income.save
       redirect_to @income, notice: "収入科目を登録しました"
     else
@@ -39,6 +39,10 @@ class IncomesController < ApplicationController
   end
 
   private
+  def income_params
+    params.require(:income).permit(:name, :description)
+  end
+
   def set_income
     @income = Income.find(params[:id])
   end
