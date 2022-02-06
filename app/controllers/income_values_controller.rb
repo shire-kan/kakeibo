@@ -1,9 +1,9 @@
 class IncomeValuesController < ApplicationController
-  before_action set_incomevalue, only: [:show, :edit, :update, :destroy]
+  before_action :set_incomevalue, only: [:show, :edit, :update, :destroy]
 
   def index
     @incomes = Income.order(created_at: :asc)
-    @income_values = IncomeValue.order("year_month asc")
+    @income_values = IncomeValue.order(year_month: :asc)
   end
 
   def show
